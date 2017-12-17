@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
-var db = require('monk')('localhost:27017/webp'); //connect to database
+var db = require('monk')('mongodb://admin:1234@ds159926.mlab.com:59926/webprograming'); //connect to database
 var router = express.Router();
 
 //create express app
@@ -126,7 +126,9 @@ router.delete('/shoppingCarts/:id', function(req, res){
     });
 });
 
-module.exports = app;
+
 app.listen(app.get('port'), function () {
     console.log('Server is running on port', app.get('port'));
 });
+
+module.exports = app;
