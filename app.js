@@ -6,7 +6,7 @@ var router = express.Router();
 
 //create express app
 var app = express();
-
+app.set('port', process.env.PORT || 8080);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -127,5 +127,6 @@ router.delete('/shoppingCarts/:id', function(req, res){
 });
 
 module.exports = app;
-app.listen(8080);
-console.log('Running on port 8080');
+app.listen(app.get('port'), function () {
+    console.log('Server is running on port', app.get('port'));
+});
