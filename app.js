@@ -128,3 +128,4 @@ router.delete('/shoppingCarts/:id', function(req, res){
 
 module.exports = app;
 app.listen(8080);
+console.log('Running on port 8080');
