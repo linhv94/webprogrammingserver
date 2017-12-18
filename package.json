@@ -12,6 +12,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongodb": "^3.0.0-rc0",
-    "monk": "^6.0.5"
+    "monk": "^6.0.5",
+    "newrelic": "^2.4.2"
   }
 }
