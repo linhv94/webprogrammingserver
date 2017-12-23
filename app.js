@@ -10,6 +10,7 @@ app.set('port', process.env.PORT || 8080);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 // use middleware and attach data in json to req.body
 app.use(function (req, res, next) {
     req.db = {};
@@ -30,6 +31,7 @@ app.get('/home', function (req, res) {
 //mount router middleware
 app.use('/', router);
 
+//Routes for products
 router.get('/products', function(req, res) {
     req.db.products.find({}, { "limit": 100 }, function (err, products) {
         res.json(products);
@@ -43,7 +45,7 @@ router.post('/products', function(req, res) {
 });
 
 router.get('/products/:id', function(req, res){
-    req.db.products.find({ _id: req.params.id }, function(err, product){
+    req.db.products.findOne({ _id: req.params.id }, function(err, product){
         res.json(product);
     })
 });
@@ -62,7 +64,7 @@ router.delete('/products/:id', function(req, res) {
 
 
 
-///////////////////////////////////////////////////////////////////
+//Routes for productTypes
 router.get('/productTypes', function(req, res) {
     req.db.productTypes.find({}, { "limit": 100 }, function (err, productTypes) {
         res.json(productTypes);
@@ -94,8 +96,8 @@ router.delete('/productTypes/:id', function(req, res) {
     });
 });
 
-///////////////////////////////////////////////////////////////////
 
+//Routes for shopping Carts
 router.get('/shoppingCarts', function(req, res){
     req.db.shoppingCarts.find({}, { "limit": 100 }, function(err, shoppingCarts){
         res.json(shoppingCarts);
